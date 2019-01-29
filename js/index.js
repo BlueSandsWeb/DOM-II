@@ -1,7 +1,5 @@
 const navLink = Array.from(document.getElementsByClassName('nav-link'));
 
-
-
 navLink.forEach(function(el) {
 
   el.addEventListener('mouseover', (e) => {
@@ -12,10 +10,18 @@ navLink.forEach(function(el) {
   });
   el.addEventListener('click', (e) => {
     el.style.transform = "scale(.95) translate(0,3px)";
+    e.stopPropagation();
+    e.preventDefault();
     window.setTimeout(() => { 
       el.style.transform = "scale(1) translate(0,0px)";
     }, 75);
   });
+});
+
+let header = document.querySelector('header');
+header.addEventListener('click', (e) => {
+  header.style.backgroundColor = "goldenrod";
+  window.setTimeout(() => {header.style.backgroundColor = "white";}, 1000);
 });
 
 const page = document.querySelector('html');
@@ -38,76 +44,18 @@ buttons.forEach((el) => {
   })
 });
 
-const mapImg = document.querySelectorAll('.img-content');
+const mapImg = document.querySelectorAll('.img-content img');
 mapImg.forEach((el) => {
   el.addEventListener('load', (e) => {
-    // el.style.
-    console.log(e);
+    window.setTimeout(() => {
+      el.style.transform = "rotate(0.5turn)";
+    }, 2000);
   });
 });
 
-
-// My attempt at making the entire nav bar draggable.  Will try further later
-
-// const dragItem = document.querySelector('.main-navigation');
-// const container = document.querySelector('body');
-// let active = false;
-// let currentX;
-// let currentY;
-// let initialX;
-// let initialY;
-// let xOffset = 0;
-// let yOffset = 0;
-
-// container.addEventListener("touchstart", dragStart, false);
-// container.addEventListener("touchend", dragEnd, false);
-// container.addEventListener("touchmove", drag, false);
-
-// container.addEventListener("mousedown", dragStart, false);
-// container.addEventListener("mouseup", dragEnd, false);
-// container.addEventListener("mousemove", drag, false);
-
-// function dragStart(e) {
-//   if (e.type === "touchstart") {
-//     initialX = e.touches[0].clientX - xOffset;
-//     initialY = e.touches[0].clientY - yOffset;
-//   } else {
-//     initialX = e.clientX - xOffset;
-//     initialY = e.clientY - yOffset;
-//   }
-
-//   if (e.target === dragItem) {
-//     active = true;
-//   }
-// }
-
-// function dragEnd(e) {
-//   initialX = currentX;
-//   initialY = currentY;
-
-//   active = false;
-// }
-
-// function drag(e) {
-//   if (active) {
-
-//     e.preventDefault();
-
-//     if (e.type === "touchmove") {
-//       currentX = e.touches[0].clientX - initialX;
-//       currentY = e.touches[0].clientY - initialY;
-//     } else {
-//       currentX = e.clientX - initialX;
-//       currentY = e.clientY - initialY;
-//     }
-
-//     xOffset = currentX;
-//     yOffset = currentY;
-
-//     setTranslate(currentX, currentY, dragItem);
-//   }
-// }
-
-// function setTranslate(xPos, yPos, el) {
-//   el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
-// }
+const p = document.querySelectorAll('p');
+p.forEach((el) => {
+  el.addEventListener('dblclick', (e) => {
+    el.style.fontSize = "2rem";
+  });
+});
