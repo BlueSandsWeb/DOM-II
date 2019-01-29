@@ -10,15 +10,21 @@ navLink.forEach(function(el) {
   el.addEventListener('mouseout', (e) => {
     el.style.color = "black";
   });
+  el.addEventListener('click', (e) => {
+    el.style.transform = "scale(.95) translate(0,3px)";
+    window.setTimeout(() => { 
+      el.style.transform = "scale(1) translate(0,0px)";
+    }, 75);
+  });
 });
 
 const page = document.querySelector('html');
 page.addEventListener('keydown', (e) => {
   if(e.key === "Enter"){
     page.style.display = "none";
-  }
-  if(e.key === "Backspace"){
-    page.style.display = "block";
+    window.setTimeout(() => {
+      page.style.display = "block";
+    }, 1000);
   }
 });
 
@@ -32,6 +38,13 @@ buttons.forEach((el) => {
   })
 });
 
+const mapImg = document.querySelectorAll('.img-content');
+mapImg.forEach((el) => {
+  el.addEventListener('load', (e) => {
+    // el.style.
+    console.log(e);
+  });
+});
 
 
 // My attempt at making the entire nav bar draggable.  Will try further later
